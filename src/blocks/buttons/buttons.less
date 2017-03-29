@@ -1,0 +1,17 @@
+@import "../../less/variables.less"; //Для удобного использования переменных
+
+.btn {
+    display: block;
+    width: 230px;
+    padding: @field-padding-top @field-padding-horizontal @field-padding-bottom;
+    text-align: center;
+    color: @white;
+    background-color: @button-color;
+    &--theme-green {
+        width: 230px;   
+        background-color: green;
+    }
+    &--size {
+        width: 100px;
+    }
+}
