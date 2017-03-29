@@ -1,0 +1,50 @@
+.container() {
+  width: 320px;
+  margin: 0 auto;
+
+  @media (min-width: @screen-md) {
+    width: 768px;
+  }
+  @media (min-width: @screen-lg) {
+    width: 1150px;
+  }
+}
+// ===========Для резины=============
+.container-fluid() {
+  width: auto;
+
+  @media (min-width: @screen-md) {
+    width: 83%;
+    max-width: @screen-xxl;
+    margin: 0 auto;
+  }
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-static(@width) {
+  width: @width;
+  .center-block;
+}
+
+.clearfix() {
+  &::after {
+  content: "";
+    
+  display: table;
+  clear: both;
+  }
+}
+
+// Примесь для шрифта
+
+.font(@fontName; @urlName: @fontName; @weight: normal; @style: normal) {
+  font-family: '@{fontName}';  
+  src: url('/fonts/@{urlName}/@{urlName}.woff') format('woff'), url('/fonts/@{urlName}/@{urlName}.woff2') format('woff2');        
+  font-weight: @weight;
+  font-style: @style;
+}
