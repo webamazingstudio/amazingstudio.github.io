@@ -2,10 +2,10 @@
   width: 320px;
   margin: 0 auto;
 
-  @media @tablet-widths {
+  @media (min-width: @screen-md) {
     width: 768px;
   }
-  @media @desktop-widths {
+  @media (min-width: @screen-lg) {
     width: 1150px;
   }
 }
@@ -13,9 +13,9 @@
 .container-fluid() {
   width: auto;
 
-  @media @tablet-widths {
-    width: 87%;
-    max-width: 1150px;
+  @media (min-width: @screen-md) {
+    width: 83%;
+    max-width: @screen-xxl;
     margin: 0 auto;
   }
 }
@@ -43,12 +43,8 @@
 // Примесь для шрифта
 
 .font(@fontName; @urlName: @fontName; @weight: normal; @style: normal) {
-  font-family: '@{fontName}';
-  src: url('/fonts/@{urlName}/@{urlName}.eot');
-  src: url('/fonts/@{urlName}/@{urlName}.eot#iefix') format('embedded-opentype'),
-  url('/fonts/@{urlName}/@{urlName}.woff') format('woff'),
-    url('/fonts/@{urlName}/@{urlName}.ttf') format('truetype'),
-    url('/fonts/@{urlName}/@{urlName}.svg') format('svg');
-    font-weight: @weight;
-    font-style: @style;
+  font-family: '@{fontName}';  
+  src: url('/fonts/@{urlName}/@{urlName}.woff') format('woff'), url('/fonts/@{urlName}/@{urlName}.woff2') format('woff2');        
+  font-weight: @weight;
+  font-style: @style;
 }

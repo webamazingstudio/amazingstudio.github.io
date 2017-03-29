@@ -1,0 +1,17 @@
+.page-header__bg {    
+    position: relative;
+    width: 100%;    
+    background-image: url(../image/header-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    &--overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: @color-main-alpha;
+    }    
+}

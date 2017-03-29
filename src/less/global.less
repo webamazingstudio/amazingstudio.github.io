@@ -11,7 +11,7 @@ html {
 
 body {
     font-size: @font-size;
-    font-family: @font-family;
+    font-family: @font-family-text;
     font-weight: 400;
     color: @text-color;
 }
@@ -42,7 +42,7 @@ pre {
 }
 
 h1 {
-    font-size: @font-size--h1;
+    font-size: @font-size--headings;
 }
 h2 {
     font-size: @font-size--h2;
@@ -85,4 +85,38 @@ h6 {
     &--col {
         flex-direction: column;        
     }
+}
+
+// Цикл для сетки в процентах мобильная, десктопная и планшетная;
+@amount: 12; //количество циклов
+@item-width: 100%; //ширина по умолчанию
+
+@media (min-width: @screen-sm)  {
+    .column-width-xs (@index) when (@index < @amount) {
+    &.col-xs-@{index} {
+        width: @index * (@item-width / @amount);
+    }
+    .column-width-xs(@index + 1);
+}
+.column-width-xs(1)    
+}
+
+@media (min-width: @screen-md) {
+    .column-width-md (@index) when (@index < @amount) {
+    &.col-md-@{index} {
+        width: @index * (@item-width / @amount);
+    }
+    .column-width-md(@index + 1);
+}
+.column-width-md(1)
+}
+
+@media (min-width: @screen-lg) {
+    .column-width-lg (@index) when (@index < @amount) {
+    &.col-lg-@{index} {
+        width: @index * (@item-width / @amount);
+    }
+    .column-width-lg(@index + 1);
+}
+.column-width-lg(1)
 }
