@@ -1,0 +1,88 @@
+@import "../../less/variables.less";
+
+@keyframes progress-bar-stripes {
+        from {
+            background-position: 40px 0;
+        }
+        to {
+            background-position: 0 0;
+        }
+    }
+    
+.progress-bar__line {    
+    height: 6px;
+    margin-bottom: 20px;
+    background-color: @second-theme-color;
+}
+
+.progress-bar__title {
+    margin-top: 40px;
+    margin-bottom: 5px;
+    font-size: (@base-fs - 6);
+    font-family: @title-ff;
+    font-weight: 700;
+    letter-spacing: 2px;        
+    color: @white-color;       
+}
+
+.progress-bar__info {
+    position: absolute;
+    right: -16px;
+    top: -32px;
+    display: block;
+    padding: 5px;
+    font-family: @title-ff, sans-serif;    
+    font-size: (@base-fs - 14);
+    line-height: (@base-lh - 14);
+    color: @white-color;
+    background-color: lighten(@bg-fill, 30%);    
+    border-radius: 3px;
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        margin-left: -5px;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-top: 5px solid lighten(@bg-fill, 30%);    
+    }
+}
+    
+.progress-bar__bar {
+    position: relative;
+    float: left;    
+    height: 100%;
+    font-size: (@base-fs - 12);
+    line-height: (@base-lh - 10);
+    color: @white-color;
+    text-align: center;
+    background-color: @second-theme-color;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    transition: width 0.6s ease;
+}
+// Цикл для вывода ширин прогресс бара
+@amount-bar: 21;
+.progress-bar__widths (@index) when (@index < @amount-bar) {    
+    &.progress__bar--perc@{index} {
+        width: @item-width - (@index*5);
+    }
+    .progress-bar__widths(@index + 1);
+}
+
+.progress-bar__widths(0);
+    
+.progress-bar__bar--gradient {
+    background-image: linear-gradient(45deg, fade(@black-color, 25%) 25%, transparent 25%, transparent 50%, fade(@black-color, 25%) 50%, fade(@black-color, 25%) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+}
+    
+.progress-bar__bar--animation {
+    animation: progress-bar-stripes 2s linear infinite;
+}
+    
+.progress-bar__bar--color {
+    background-color: @white-color;
+}
+
+

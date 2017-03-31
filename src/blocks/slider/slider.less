@@ -1,0 +1,35 @@
+@import "../../less/variables.less";
+
+.slider {
+
+}
+
+.slider__wrap {
+
+}
+
+.slider__slide {
+    display: none;
+
+    &--show {
+        display: block;
+    }
+}
+
+.slider__dots {
+    font-size: 0;
+}
+
+.slider__dot {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: @gray;
+    &--active {
+        background-color: @gray-darker;
+    }
+}
+
