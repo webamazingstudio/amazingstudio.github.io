@@ -1,4 +1,6 @@
 'use strict';
+const json = require('./package.json');
+const dirs = json.config.directories;
 
 const gulp = require('gulp');
 const less = require('gulp-less');
@@ -13,35 +15,18 @@ const svgmin = require('gulp-svgmin');
 const svgstore = require('gulp-svgstore');
 const del = require('del');
 const uglify = require('gulp-uglify');
+const notify = require('gulp-notify');
 const fileinclude = require('gulp-file-include');
-const jsinclude = require('gulp-include');
+const concat = require('gulp-concat');
 const newer = require('gulp-newer');
 const replace = require('gulp-replace');
 const server = require('browser-sync');
 const run = require('run-sequence'); //Для запуска build
 
-gulp.task('clean', function () {
-    return del('build');
-});
-
-gulp.task('copy', function () {
-    return gulp.src([
-            'src/image/**',
-            'src/js/**',
-            'src/fonts/**/*.{woff, woff2}',
-            'src/*.html'
-        ], {
-            base: 'src' //Родительский каталог откуда копировать
-        })
-        .pipe(gulp.dest('build'))
-});
-
-gulp.task('clean-icons-folder', function () {
-    return del('build/image/icons');
-});
 
 gulp.task('style', function () {
-    gulp.src('src/less/style.less')
+    console.log('Компилирую LESS');
+    gulp.src(dirs.source + '/less/style.less')
         .pipe(plumber())
         .pipe(less())
         .pipe(postcss([
@@ -58,43 +43,53 @@ gulp.task('style', function () {
                 sort: true
             })
         ]))
-        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest(dirs.build + '/css'))
         .pipe(minify())
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest(dirs.build + '/css'))
         .pipe(server.stream());
 });
 
-gulp.task('html-watch', function () {
-    return gulp.src(['src/*.html'])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file',
-            indent: true
-        }))
-        .pipe(replace(/\n\s*<!--DEV[\s\S]+?-->/gm, ''))
-        .pipe(gulp.dest('build'));
+gulp.task('clean', function () {
+    console.log('Очистка build')
+    return del(dirs.build);
 });
 
-gulp.task('watch-js', function () {
-    gulp.src('src/js/script.js')
-        .pipe(jsinclude())
-        .pipe(uglify())
-        .pipe(rename('script.min.js'))
-        .pipe(gulp.dest('build/js'))
+gulp.task('copy', function () {
+    console.log('Копирование файлов')
+    return gulp.src([
+            dirs.source + '/image/**',            
+            dirs.source + '/fonts/**/*.{woff, woff2}',
+            dirs.source + '/*.html',
+            dirs.source + '/*.php',            
+            dirs.source + '/*.json',            
+            dirs.source + '/*.xml'            
+        ], {
+            base: dirs.source
+        })        
+        .pipe(gulp.dest(dirs.build))    
 });
 
-gulp.task('uglifyjs', function () {
-    gulp.src('build/js/script.js')
-        .pipe(uglify())
-        .pipe(rename('script.min.js'))
-        .pipe(gulp.dest('build/js'))
+
+gulp.task('clean-icons-folder', function () {
+    console.log('Удаляем папку icons')
+    return del(dirs.build + '/image/icons');
 });
+
+gulp.task('jshandler', function() {
+    console.log('Обработка JS')
+    return gulp.src([ dirs.node + '/jquery/dist/jquery.js',dirs.node + '/slick-carousel/slick/slick.js', dirs.source + '/blocks/**/*.js'])
+        .pipe(concat('script.min.js'))
+        .pipe(plumber())
+        .pipe(uglify())
+        .pipe(gulp.dest(dirs.build + '/js'))
+})
+
 
 gulp.task('images', function () {
-    console.log('--------------Оптимизирую изображения');
-    return gulp.src('build/image/**/*.{png,jpg,gif}')
-        .pipe(newer('build/image'))
+    console.log('Оптимизизация изображений');
+    return gulp.src(dirs.build + '/image/**/*.{png,jpg,gif}')
+        .pipe(newer( dirs.build + '/image'))
         .pipe(imagemin([
             imagemin.optipng({
                 optimizationlevel: 3
@@ -103,45 +98,46 @@ gulp.task('images', function () {
                 progressive: true
             })
         ]))
-        .pipe(gulp.dest('build/image'));
+        .pipe(gulp.dest(dirs.build + '/image'));
 });
 
 gulp.task('svg-min', function () {
-    return gulp.src('build/image/*.svg')
-        .pipe(newer('build/image'))
+    return gulp.src( dirs.build + '/image/*.svg')
+        .pipe(newer( dirs.build + '/image'))
         .pipe(svgmin())
-        .pipe(gulp.dest('build/image'));
+        .pipe(gulp.dest( dirs.build + '/image'));
 });
 
 gulp.task('symbols', function () {
-    return gulp.src('build/image/icons/*.svg')
-        .pipe(newer('build/image'))
+    return gulp.src( dirs.build + '/image/icons/*.svg')
+        .pipe(newer( dirs.build + '/image'))
         .pipe(svgmin())
         .pipe(svgstore({
             inlineSvg: true
         }))
         .pipe(rename('symbols.svg'))
-        .pipe(gulp.dest('build/image'));
+        .pipe(gulp.dest( dirs.build + '/image'));
 });
 
 gulp.task('html', function () {
-    console.log('---------- сборка HTML');
-    return gulp.src(['src/*.html'])
+    console.log('Компиляция HTML');
+    return gulp.src([ dirs.source + '/*.html'])
+        .pipe(plumber({
+            errorHandler: function (err) {
+                notify.onError({
+                    title: 'HTML compilation error',
+                    message: err.message
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file',
             indent: true
         }))
         .pipe(replace(/\n\s*<!--DEV[\s\S]+?-->/gm, ''))
-        .pipe(gulp.dest('build'));
-});
-
-gulp.task('jsincl', function() {
-    console.log('---------- Сборка JS');
-    return gulp.src(['src/js/**/*.js'])
-        .pipe(jsinclude())
-        .on('error', console.log)
-        .pipe(gulp.dest('build/js'));
+        .pipe(gulp.dest(dirs.build));
 });
 
 gulp.task('serve', function () {
@@ -149,23 +145,24 @@ gulp.task('serve', function () {
         server: 'build'
     });
 
-    gulp.watch('src/**/**/*.less', ['style']);
-    gulp.watch('src/**/**/*.js', ['watch-js']);
-    gulp.watch('src/**/**/*.html', ['html-watch']).on('change', server.reload);
+    gulp.watch(dirs.source + '/**/*.less', ['style']);
+    gulp.watch(dirs.source + '/**/*.js', ['jshandler']);
+    gulp.watch(dirs.source + '/**/*.html', ['html']).on('change', server.reload);
 });
 
 gulp.task('build', function (fn) {
     run(
         'clean',
-        'copy',
-        'html',
-        'jsincl',
+        'copy',        
+        'html',        
         'style',
         'images',
         'svg-min',
         'symbols',
         'clean-icons-folder',
-        'uglifyjs',
+        'jshandler',
         fn
     );
 });
+
+
