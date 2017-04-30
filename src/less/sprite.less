@@ -1,0 +1,33 @@
+.stitches-sprite(@x: 0, @y: 0) {
+    background-image: url(../image/spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+    background-position: @x @y;
+    
+}
+
+.sprite {   
+
+    &.sprite-comp {
+        .stitches-sprite(-15px, -15px);
+    }
+
+    &.sprite-accessory32 {
+        .stitches-sprite(-15px, -93px);
+    }
+
+    &.sprite-diamond12 {
+        .stitches-sprite(-15px, -157px);
+    }
+
+    &.sprite-magnifyingglass54 {
+        .stitches-sprite(-15px, -300px);
+    }
+
+    &.sprite-mobile209 {
+        .stitches-sprite(-15px, -397px);
+    }
+    &.sprite-tasks3 {
+        .stitches-sprite(-15px, -640px);
+    }
+}

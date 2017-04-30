@@ -1,0 +1,40 @@
+.adaptive {
+    position: relative;
+    padding: 30px 15px;
+    text-align: center;    
+}
+
+.adaptive__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../image/adaptive-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 114px 230px;
+    background-position: 50%; 
+    opacity: 0.5;
+    z-index: -1;
+    @media @screen-retina {
+        background-image: url(../image/adaptive-mobile@2x.png);
+    }
+}
+
+.adaptive__title {
+    position: relative;
+    text-transform: uppercase;
+    &--mask::before {
+        content: "Adaptate";
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 10rem;        
+        color: fade(@color-main, 50%);
+    }    
+}
+
+.adaptive__text {
+    font-size: @font-size;
+}

@@ -1,0 +1,40 @@
+.care-all {
+    position: relative;
+    padding: 30px 15px;
+    text-align: center;    
+}
+
+.care-all__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../image/picture.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.2;
+    z-index: -1;    
+    @media @screen-retina {
+        background-image: url(../image/picture@2x.jpg);
+        background-size: 320px auto;
+    }
+}
+
+.care-all__title {
+    position: relative;
+    text-transform: uppercase;
+    &--mask::before {
+        contetn: "Be Careful";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        font-size: 10rem;
+        color: fade(@color-main, 50%);
+    }
+}
+
+.care-all__text {
+    font-size: @font-size;
+}

@@ -1,0 +1,78 @@
+.header-promo {
+    padding: 80px 15px 30px;
+    background-color: @color-main-alpha;
+}
+
+.header-promo__title {
+    font-size: @font-size--h2;
+    font-weight: 700;
+    color: @white;
+    text-align: center;    
+}
+
+.header-promo__descr {
+    font-size: @font-size;
+    color: @white;
+    text-align: center;
+}
+
+.header-promo__item {
+    position: relative;    
+    margin-bottom: 40px;
+    padding: 40px 30px 30px;
+    color: @white;
+    border: solid 2px @white;
+    border-top: none;
+    box-sizing: border-box;
+    &::before,
+    &::after {
+        position: absolute;
+        top: 0;
+        content: '';
+        width: 40%;
+        height: 2px;
+        background-color: @white;
+    }
+    &::before{
+        left: 0;
+    }    
+    &::after {
+        right: 0;
+    }
+}
+
+.header-promo__icon {
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 50px;
+    height: 50px;    
+    &--star {
+        top: -13px;        
+        .stitches-sprite(-12px, -236px);
+    }
+    &--list {
+        top: -15px;
+        .stitches-sprite(-10px, -640px);
+    }
+    &--diam {
+        top: -15px;
+        .stitches-sprite(-12px, -93px);
+    }
+}
+
+.header-promo__number {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: @font-size--headings ;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 10px;
+}
+
+.header-promo__text {
+    margin: 0;
+    font-size: @font-size;
+    text-align: center;
+    text-transform: uppercase;
+}

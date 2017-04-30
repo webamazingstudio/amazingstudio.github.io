@@ -1,11 +1,15 @@
-// navMain.classList.remove("main-nav--no-js");//Удаляет класс --no-js если js в браузере включен.
+var navMain = document.querySelector('.main-nav')
 
-// var trigger = document.querySelector('.toggle-burger');
+navMain.classList.remove("main-nav--no-js");//Удаляет класс --no-js если js в браузере включен.
 
-// trigger.addEventListener('click', function() {
-//   if (trigger.classList.contains('trigger--show')) {
-//     trigger.classList.remove('trigger--show');
-//   } else {
-//     trigger.classList.add('trigger--show')
-//   };
-// });
+var trigger = document.querySelector('.toggle-burger');
+
+trigger.addEventListener('click', function() {
+  if (trigger.classList.contains('toggle-burger--show')) {
+    trigger.classList.remove('toggle-burger--show');
+    navMain.classList.add('main-nav--close');
+  } else {
+    trigger.classList.add('toggle-burger--show');
+    navMain.classList.remove('main-nav--close');
+  };
+});

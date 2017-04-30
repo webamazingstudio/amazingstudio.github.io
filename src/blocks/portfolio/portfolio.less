@@ -1,0 +1,43 @@
+.portfolio {
+    padding: 30px 15px;
+    background-color: @color-main;
+}
+
+.portfolio__title {
+    position: relative;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase; 
+    color: @white;
+    &--mask::before {
+        content: "Our project";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        font-size: 10rem;
+        color: fade(@white, 30%);
+        text-transform: uppercase;
+    }
+}
+
+.portfolio__descr {
+    font-size: @font-size;
+    text-align: center;
+    color: @white;
+}
+
+.portfolio__wrapper {
+    display: flex;
+    flex-flow: column wrap;    
+}
+
+.portfolio__picture {
+    margin-bottom: 20px;
+    border: 4px solid @white;
+    box-sizing: border-box;
+}
+
+.portfolio__link {
+    display: none;
+}

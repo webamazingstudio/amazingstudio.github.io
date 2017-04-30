@@ -1,0 +1,74 @@
+.studio {
+    padding: 30px 15px;
+}
+
+.studio__title {    
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.studio__descr {
+    position: relative;
+    font-size: @font-size;
+    text-align: center;
+    &::before {
+        content: 'A.lab';
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        font-size: @font-size--headings + 10;
+        font-weight: 700;
+        color: fade(@gray-lighter, 40%);
+        transform: rotate(-25deg);
+        z-index: -1;
+    }
+}
+
+.studio__head {
+    position: relative;
+    margin-bottom: 0;
+    text-align: center;
+    &::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        .stitches-sprite(-15px, -472px);
+    }
+
+    &--seo::before {
+        .stitches-sprite(-15px, -397px);
+    }
+    &--support::before {
+        .stitches-sprite(-15px, -560px);
+    }
+}
+
+.studio__text {
+    font-size: @font-size;
+    text-align: justify;
+}
+
+.studio__btn {
+    display: block;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: @font-size + 0.5;
+    color: @white;
+    background-color: @color-casablanca;
+    border: 0;
+    outline: 0;
+    border-radius: @border-radius;
+    cursor: pointer;
+    transition: all @transition-time linear;
+    &:hover,
+    &:focus {
+        background-color: @color-main;
+    }
+}
+

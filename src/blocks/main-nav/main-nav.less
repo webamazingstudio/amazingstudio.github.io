@@ -1,34 +1,91 @@
 .main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: @color-casablanca;
+    z-index: 20;
+}
 
+.main-nav--close .main-nav__list {
+    transform: translateY(-150%);
 }
 
 .main-nav__list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;    
     margin: 0;
-    padding: 0;
+    padding: 20px 0 0;
     margin-left: auto;
-    justify-content: flex-end;
+    text-align: center;
+    background-color: @color-casablanca;
+    transition: transform @transition-time linear;
+    z-index: -1;
 }
 
 .main-nav__item {
-    margin-right: 4rem;
+    width: 100%;
+    padding: 10px 0;
     list-style: none;
+    border-top: 2px solid fade(@black, 80%);
     &:last-child {
-        margin-right: 0;
+        border-bottom: 2px solid fade(@black, 80%)
     }
 }
 
 .main-nav__link {
     display: block;
     font-size: @font-size + 0.6;
-    &:hover {
-        text-decoration: none;
+    transition: all @transition-time linear;
+    &:hover,
+    &:focus {
+        color: @color-main;        
     }
 }
 
 @media (min-width: @screen-md) {
-
+    .main-nav {        
+        position: relative;
+        margin-top: 20px;
+        padding: 0;
+        padding-bottom: 20px;
+        background-color: transparent;
+        border-bottom: 2px solid @gray-lighten
+    }
+    .main-nav__link {
+        &:hover,
+        &:focus {
+            color: @color-casablanca;
+            text-decoration: none;
+        }
+    }
+    .main-nav--close .main-nav__list {
+        transform: translateY(0);
+    }
+    .main-nav__list {
+        position: relative;
+        top: 0;
+        width: 83%;               
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        padding: 0;
+        text-align: left;
+        background-color: transparent;
+    }
+    .main-nav__item {
+        width: auto;
+        margin-right: 4rem;
+        border: 0;
+        &:last-child {
+            margin-right: 0;
+            border: 0;
+        }
+    }
 }
 
-@media (min-width: @screen-xl) {
-    
-}
+@media (min-width: @screen-xl) {}
