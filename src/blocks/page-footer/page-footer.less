@@ -1,5 +1,35 @@
 .page-footer {
-    padding-top: 54px;
-    padding-bottom: 54px;
+    padding: 30px 15px;
     background-color: @color-casablanca;
+}
+
+.contacts {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.contacts__link {    
+    &:hover {
+        color: @black;
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: @screen-s) {
+    .contacts__link {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+@media(min-width: @screen-md) {
+    .contacts {
+        flex-direction: row;
+    }
+    .contacts__item {
+        width: 50%;
+        &:last-child {
+            width: 100%;
+        }
+    }
 }

@@ -42,6 +42,9 @@
     &::-moz-placeholder          {color:@white;}/* Firefox 19+ */
     &:-moz-placeholder           {color:@white;}/* Firefox 18- */
     &:-ms-input-placeholder      {color:@white;}
+    &[name=message] {
+        font-size: @font-size + 0.8;
+    } 
     &:focus,
     &:hover {
         border-color: @color-casablanca;
@@ -68,7 +71,7 @@
     }
 }
 
-@media @screen-retina {    
+@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {    
     .feedback {
         background-image: url(../image/credo-bg-mobile@2x.jpg);
     }
@@ -77,6 +80,9 @@
 @media (min-width: @screen-md) {
     .feedback {
         background-image: url(../image/credo-bg-tablet.jpg);
+    }
+    .feedback__submit {
+        width: 30%;
     }
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         .feedback {

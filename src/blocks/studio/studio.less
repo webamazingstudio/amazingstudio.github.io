@@ -72,3 +72,22 @@
     }
 }
 
+@media(min-width: @screen-sm) {
+    .studio__head {
+        padding-left: 90px;
+        text-align: left;
+    }
+}
+
+@media(min-width: @screen-md) {
+    .studio__descr {
+        &::before {
+            top: -80px;
+            font-size: 25rem;
+            transform: rotate(0deg);
+        }
+    }
+    .studio__btn {
+        width: 30%;
+    }
+}

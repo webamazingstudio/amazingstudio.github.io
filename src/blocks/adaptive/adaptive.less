@@ -16,7 +16,7 @@
     background-position: 50%; 
     opacity: 0.5;
     z-index: -1;
-    @media @screen-retina {
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url(../image/adaptive-mobile@2x.png);
     }
 }
@@ -37,4 +37,26 @@
 
 .adaptive__text {
     font-size: @font-size;
+}
+
+@media (min-width: @screen-md) {
+    .adaptive__picture {
+        opacity: 0.3;        
+        background-image: url(../image/adaptive-tablet.png);
+        background-size: 250px auto;        
+        @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+            background-image: url(../image/adaptive-tablet@2x.png);
+        }
+    }
+}
+
+@media (min-width: @screen-lg) {
+    .adaptive__picture {     
+           
+        background-image: url(../image/adaptive.png);
+        background-size: 450px auto;
+        @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+            background-image: url(../image/adaptive@2x.png);
+        }
+    }
 }
