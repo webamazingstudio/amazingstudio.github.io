@@ -17,7 +17,8 @@
 }
 
 .header-promo__item {
-    position: relative;    
+    position: relative;
+    width: 100%;    
     margin-bottom: 40px;
     padding: 40px 30px 30px;
     color: @white;
@@ -79,6 +80,29 @@
 
 @media (min-width: @screen-md) {
     .header-promo__icon {
-        left: 47%;
+        left: 43%;
+    }
+
+    .header-promo__item {
+        width: 49%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: @screen-lg) {
+    .header-promo__title {
+        font-size: @font-size--headings;
+    }
+
+    .header-promo__descr {
+        margin-bottom: 40px;
+        font-size: @font-size + 0.4;
+    }
+    .header-promo__icon {
+        left: 42.5%;
+    }
+    .header-promo__item {
+        width: 32%;
     }
 }

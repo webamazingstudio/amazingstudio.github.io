@@ -6,13 +6,13 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 250px;                
+        bottom: 0;
+        width: 100%;                       
         background-color: @color-casablanca;
         background-image: url(../image/engine-bg.png);
         background-repeat: no-repeat;
-        background-position: 0;
-        background-size: cover;        
+        background-position: 0 0;
+        background-size: 100% auto;               
         z-index: -1;
     }
 }
@@ -101,6 +101,55 @@
         width: 60%;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media(min-width: @screen-lg) {
+    .develop {
+        &::before {            
+            width: 600px;
+            height: 400px;
+        }
+    }
+    .develop__title {
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .develop__wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .develop__item {
+        display: inline-block;
+        width: 32%;
+        &--web {
+            h2 {
+                margin-bottom: 80px;
+            }
+        }
+    }
+    .develop__inner-title {
+        margin: 0;
+        line-height: 1;
+    }
+    .develop__price {
+        font-size: @font-size - 0.3;
+    }
+}
+
+@media(min-width: @screen-xl) {
+    .develop__item {
+        display: inline-block;
+        width: 32%;
+        &--landing {
+            h2 {
+                margin-bottom: 80px;
+            }
+        }
     }
 }
 

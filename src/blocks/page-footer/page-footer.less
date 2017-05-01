@@ -25,11 +25,13 @@
 @media(min-width: @screen-md) {
     .contacts {
         flex-direction: row;
+        justify-content: space-between;
     }
+
     .contacts__item {
-        width: 50%;
-        &:last-child {
-            width: 100%;
+        text-align: center;
+        &:first-child {
+            text-align: left;
         }
     }
 }

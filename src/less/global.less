@@ -95,7 +95,7 @@ h6 {
 @media (min-width: @screen-xs)  {
     .column-width-s (@index) when (@index < @amount) {
     &.col-s-@{index} {
-        width: @index * (@item-width / @amount);
+        width: @index * (@item-width / @amount)-1;
     }
     .column-width-s(@index + 1);    
 }
@@ -108,7 +108,7 @@ h6 {
 @media (min-width: @screen-md) {
     .column-width-md (@index) when (@index < @amount) {
     &.col-md-@{index} {
-        width: @index * (@item-width / @amount);
+        width: @index * (@item-width / @amount)-1;
     }
     .column-width-md(@index + 1);
 }
@@ -121,7 +121,7 @@ h6 {
 @media (min-width: @screen-lg) {
     .column-width-lg (@index) when (@index < @amount) {
     &.col-lg-@{index} {
-        width: @index * (@item-width / @amount);
+        width: @index * (@item-width / @amount)-1;
     }
     .column-width-lg(@index + 1);
 }

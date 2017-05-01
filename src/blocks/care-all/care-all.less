@@ -25,16 +25,45 @@
     position: relative;
     text-transform: uppercase;
     &--mask::before {
-        contetn: "Be Careful";
+        content: "Be Careful";
         position: absolute;
         top: 0;
         left: 0;
         display: none;
         font-size: 10rem;
-        color: fade(@color-main, 50%);
+        color: fade(@black, 20%);
     }
 }
 
 .care-all__text {
     font-size: @font-size;
+}
+
+@media (min-width: @screen-lg) {
+    .care-all {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .care-all__title {
+        width: 50%;
+        text-align: left;
+        &--mask::before {
+            display: block;
+            top: -20px;
+            left: -40px;
+            font-size: 6rem;
+        }
+    }
+
+    .care-all__picture {
+        background-position: 100%;
+    }
+
+    .care-all__text {
+        width: 50%;
+    }
 }

@@ -80,3 +80,29 @@
         text-decoration: none;
     }
 }
+
+@media (min-width: @screen-lg) {
+    .portfolio__wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .portfolio__picture {        
+        margin-bottom: 0;
+        img{
+            height: 100%;
+        }
+    }
+
+    .portfolio__title {
+        width: 100%;        
+        text-align: center;
+        &--mask::before {
+            display: block;
+            top: -30px;
+            left: 111px;     
+            font-size: 8rem;
+        }
+    }
+
+}

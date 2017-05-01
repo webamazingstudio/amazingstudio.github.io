@@ -39,7 +39,11 @@ gulp.task('style', function () {
                     'last 2 Edge versions'
                 ]
             }),
-            mqpacker()
+            mqpacker(
+                {
+                    sort: true
+                }
+            )
         ]))
         .pipe(gulp.dest(dirs.build + '/css'))
         .pipe(minify())

@@ -88,4 +88,51 @@
     .refresh__button {
         width: 40%;
     }
+
+    .refresh {
+        background-image: url(../image/trade-in-tablet.jpg);
+        background-repeat: no-repeat;
+        background-position: 0;        
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .refresh {
+
+            background-image: url(../image/trade-in-tablet@2x.jpg);
+        }
+    }
+}
+
+@media(min-width: @screen-lg) {
+    .refresh {
+        background-image: url(../image/trade-in.jpg);        
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .refresh {
+            background-image: url(../image/trade-in@2x.jpg);
+        }
+    }
+
+    .refresh__overlay {
+        background-color: fade(@black, 50%);
+    }
+
+    .refresh__wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .refresh__title {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .refresh__text {
+        font-size: @font-size - 0.3;
+    }
+
+    .refresh__button {
+        width: 30%;
+    }
 }
