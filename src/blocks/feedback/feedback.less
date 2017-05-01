@@ -1,0 +1,96 @@
+.feedback {    
+    background-image: url(../image/credo-bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: cover;    
+}
+
+.feedback__overlay {
+    background-color: fade(@color-main, 50%);
+}
+
+.feedback__wrapper {
+    display: flex;
+    flex-flow: column wrap;    
+    padding: 30px 15px;    
+    color: @white;
+}
+
+.feedback__title {
+    text-transform: uppercase;
+}
+
+.feedback__text {
+    font-size: @font-size;
+}
+
+.feedback__form form {
+    display: flex;
+    flex-flow: column wrap;      
+}
+
+.feedback__input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: @font-size;
+    color: @white;
+    background-color: transparent;
+    border: 2px solid @white;
+    outline: none;
+    box-sizing: border-box;
+    &::-webkit-input-placeholder {color:@white;}
+    &::-moz-placeholder          {color:@white;}/* Firefox 19+ */
+    &:-moz-placeholder           {color:@white;}/* Firefox 18- */
+    &:-ms-input-placeholder      {color:@white;}
+    &:focus,
+    &:hover {
+        border-color: @color-casablanca;
+    }
+}
+
+.feedback__submit {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 2.5rem;
+    color: #fff;
+    background-color: #f6ae48;
+    border: 0;
+    outline: 0;
+    border-radius: @border-radius--feedback;
+    cursor: pointer;
+    transition: all .3s linear;
+    &:hover,
+    &:focus {
+        background-color: @color-main;
+    }
+}
+
+@media @screen-retina {    
+    .feedback {
+        background-image: url(../image/credo-bg-mobile@2x.jpg);
+    }
+}
+
+@media (min-width: @screen-md) {
+    .feedback {
+        background-image: url(../image/credo-bg-tablet.jpg);
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .feedback {
+            background-image: url(../image/credo-bg-tablet@2x.jpg);
+        }
+    }
+}
+@media(min-width: @screen-lg) {
+    .feedback {
+        background-image: url(../image/feedback-bg.jpg);
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .feedback {
+            background-image: url(../image/feedback-bg@2x.jpg);
+        }
+    }
+}
