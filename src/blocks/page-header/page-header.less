@@ -7,25 +7,22 @@
     background-size: cover;
 }
 
-@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-    .page-header__bg {
-        background-image: url(../image/header-bg-mobile@2x.jpg);
-    }
-    @media(min-width: @screen-md) {
+@media(min-width: @screen-xs) {
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         .page-header__bg {
-            background-image: url(../image/header-bg-tablet@2x.jpg);
-        }
-    }
-    @media(min-width: @screen-lg) {
-        .page-header__bg {
-            background-image: url(../image/header-bg@2x.jpg);
-        }
+          background-image: url(../image/header-bg-mobile@2x.jpg);
+        } 
     }
 }
 
 @media(min-width: @screen-md) {
     .page-header__bg {
         background-image: url(../image/header-bg-tablet.jpg);
+    }
+    @media(min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .page-header__bg {
+            background-image: url(../image/header-bg-tablet@2x.jpg);
+        }
     } 
 
 }
@@ -33,6 +30,11 @@
 @media(min-width: @screen-lg) {
     .page-header__bg {
         background-image: url(../image/header-bg.jpg);
+    }
+    @media(min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .page-header__bg {
+            background-image: url(../image/header-bg@2x.jpg);
+        }
     }
 }
 

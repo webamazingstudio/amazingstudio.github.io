@@ -91,3 +91,16 @@
     }
     
 }
+
+@media (min-width: @screen-xl) {
+    .adaptive {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .adaptive__title {
+        &--mask::before {
+            left: 15px;
+        }
+    }
+}
