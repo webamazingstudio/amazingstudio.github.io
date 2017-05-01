@@ -1,0 +1,76 @@
+.care-all {
+    position: relative;
+    padding: 30px 15px;
+    text-align: center;    
+}
+
+.care-all__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../image/picture.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.2;
+    z-index: -1;    
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url(../image/picture@2x.jpg);
+        background-size: 320px auto;
+    }
+}
+
+.care-all__title {
+    position: relative;
+    text-transform: uppercase;
+    &--mask::before {
+        content: "Be Careful";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        font-size: 10rem;
+        color: fade(@black, 20%);
+    }
+}
+
+.care-all__text {
+    font-size: @font-size;
+}
+
+@media (min-width: @screen-lg) {
+    .care-all {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .care-all__title {
+        width: 50%;
+        text-align: left;
+        &--mask::before {
+            display: block;
+            top: -20px;
+            left: -40px;
+            font-size: 6rem;
+        }
+    }
+
+    .care-all__picture {
+        background-position: 100%;
+    }
+
+    .care-all__text {
+        width: 50%;
+    }
+}
+
+@media (min-width: @screen-xl) {
+    .care-all {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}

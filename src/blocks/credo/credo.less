@@ -1,0 +1,53 @@
+.credo {
+    background-image: url(../image/credo-bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: cover;
+}
+
+.credo__bg {
+    background-color: @color-main-alpha;
+}
+
+.credo__wrapper {
+    padding: 30px 15px;
+    text-align: center;
+    color: @white;
+    
+}
+
+.credo__descr {
+    font-size: @font-size;
+}
+@media(min-width: @screen-xs){
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .credo {
+            background-image: url(../image/credo-bg-mobile@2x.jpg);
+        }
+    }
+}
+
+
+
+@media(min-width: @screen-md) {
+    .credo {
+        background-image: url(../image/credo-bg-tablet.jpg);
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .credo {
+            background-image: url(../image/credo-bg-tablet@2x.jpg);
+        }
+    }
+}
+
+@media(min-width: @screen-lg) {
+    .credo {
+        background-image: url(../image/credo-bg.jpg);
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .credo {
+            background-image: url(../image/credo-bg@2x.jpg);
+        }
+    }
+}
+

@@ -1,0 +1,144 @@
+.feedback {    
+    background-image: url(../image/credo-bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: cover;    
+}
+
+.feedback__overlay {
+    background-color: fade(@color-main, 50%);
+}
+
+.feedback__wrapper {
+    display: flex;
+    flex-flow: column wrap;    
+    padding: 30px 15px;    
+    color: @white;
+}
+
+.feedback__title {
+    text-transform: uppercase;
+}
+
+.feedback__text {
+    font-size: @font-size;
+}
+
+.feedback__form form {
+    display: flex;
+    flex-flow: column wrap;      
+}
+
+.feedback__input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: @font-size;
+    color: @white;
+    background-color: transparent;
+    border: 2px solid @white;
+    border-left-width: 4px;
+    border-right-width: 4px;    
+    outline: none;
+    box-sizing: border-box;
+    &::-webkit-input-placeholder {color:@white;}
+    &::-moz-placeholder          {color:@white;}/* Firefox 19+ */
+    &:-moz-placeholder           {color:@white;}/* Firefox 18- */
+    &:-ms-input-placeholder      {color:@white;}
+    &[name=name] {
+        border-top-width: 4px;
+    }
+    &[name=message] {
+        font-size: @font-size + 0.8;
+        border-bottom-width: 4px;
+    } 
+    &:focus,
+    &:hover {
+        border-color: @color-casablanca;
+    }
+}
+
+.feedback__submit {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 2.5rem;
+    color: #fff;
+    background-color: #f6ae48;
+    border: 0;
+    outline: 0;
+    border-radius: @border-radius--feedback;
+    cursor: pointer;
+    transition: all .3s linear;
+    &:hover,
+    &:focus {
+        background-color: @color-main;
+    }
+}
+
+@media (min-width: @screen-xs) {
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {    
+        .feedback {
+            background-image: url(../image/credo-bg-mobile@2x.jpg);
+        }
+    }
+}
+
+@media (min-width: @screen-md) {
+    .feedback {
+        background-image: url(../image/credo-bg-tablet.jpg);
+    }
+    .feedback__submit {
+        width: 30%;
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .feedback {
+            background-image: url(../image/credo-bg-tablet@2x.jpg);
+        }
+    }
+}
+@media(min-width: @screen-lg) {
+    .feedback {
+        background-image: url(../image/feedback-bg.jpg);
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .feedback {
+            background-image: url(../image/feedback-bg@2x.jpg);
+        }
+    }
+
+    .feedback__wrapper {
+        flex-direction: row;
+    }
+
+    .feedback__form {
+        form {
+            flex-direction: row;
+        }
+    }
+
+    .feedback__label {
+        width: 50%;
+        &--full-size {
+            width: 100%;
+        }
+        &:nth-child(2) {
+            input {
+                border-top-width: 4px;
+            }
+        }        
+    }
+
+    .feedback__input {
+        font-size: @font-size - 0.3;
+        &[name=message] {
+            font-size: @font-size + 0.5;
+        }
+    }
+
+    .feedback__submit {
+        width: 40%;
+    }
+    
+}

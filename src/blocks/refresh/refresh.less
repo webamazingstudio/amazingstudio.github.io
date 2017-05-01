@@ -1,0 +1,138 @@
+// Для импорта в диспетчер подключений: @import './src/blocks/refresh/refresh.less';
+
+@import '../../less/variables.less';     // только для удобства обращения к переменным
+
+.refresh {
+    background-color: fade(@color-main, 70%); 
+}
+
+.refresh__wrapper {
+    padding: 30px 15px;
+    color: @white;
+    text-align: center;       
+}
+
+.refresh__title {
+    text-transform: uppercase;
+}
+
+.refresh__item {
+    text-align: left;
+}
+
+
+.refresh__inner-title {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    &--icon-process {
+        padding-left: 80px;
+    }
+    &--icon-diam {
+        padding-top: 15px;
+    }
+    &--icon::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 70px;
+        height: 50px;        
+    }
+
+    &--icon-process::before {
+        .stitches-sprite(-15px, -15px);
+    }
+    &--icon-diam::before {
+        .stitches-sprite(-15px, -157px);
+    }
+}
+
+.refresh__text {
+    font-size: @font-size;    
+}
+
+.refresh__button {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 2.5rem;
+    color: #fff;
+    background-color: #f6ae48;
+    border: 0;
+    outline: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .3s linear;
+    &:hover,
+    &:focus {
+        background-color: #303263;
+    }
+}
+
+@media (min-width:@screen-s) {
+    .refresh__inner-title {
+        &--icon-process {
+            padding-top: 20px;
+        }
+    }
+}
+
+@media(min-width: @screen-md) {
+    .refresh__inner-title {
+        padding-left: 90px;
+        text-align: left;
+    }
+    .refresh__button {
+        width: 40%;
+    }
+
+    .refresh {
+        background-image: url(../image/trade-in-tablet.jpg);
+        background-repeat: no-repeat;
+        background-position: 0;        
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .refresh {
+
+            background-image: url(../image/trade-in-tablet@2x.jpg);
+        }
+    }
+}
+
+@media(min-width: @screen-lg) {
+    .refresh {
+        background-image: url(../image/trade-in.jpg);        
+    }
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        .refresh {
+            background-image: url(../image/trade-in@2x.jpg);
+        }
+    }
+
+    .refresh__overlay {
+        background-color: fade(@black, 50%);
+    }
+
+    .refresh__wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .refresh__title {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .refresh__text {
+        font-size: @font-size - 0.3;
+    }
+
+    .refresh__button {
+        width: 30%;
+    }
+}

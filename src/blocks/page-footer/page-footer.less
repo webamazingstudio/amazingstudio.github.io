@@ -1,0 +1,37 @@
+.page-footer {
+    padding: 30px 15px;
+    background-color: @color-casablanca;
+}
+
+.contacts {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.contacts__link {    
+    &:hover {
+        color: @black;
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: @screen-s) {
+    .contacts__link {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+@media(min-width: @screen-md) {
+    .contacts {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contacts__item {
+        text-align: center;
+        &:first-child {
+            text-align: left;
+        }
+    }
+}

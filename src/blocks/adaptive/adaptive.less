@@ -1,0 +1,106 @@
+.adaptive {
+    position: relative;
+    padding: 30px 15px;
+    text-align: center;    
+}
+
+.adaptive__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../image/adaptive-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 114px 230px;
+    background-position: 50%; 
+    opacity: 0.5;
+    z-index: -1;        
+}
+
+
+
+.adaptive__title {
+    position: relative;
+    text-transform: uppercase;
+    &--mask::before {
+        content: "Adaptate";
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 10rem;        
+        color: fade(@black, 20%);
+    }    
+}
+
+.adaptive__text {
+    font-size: @font-size;
+}
+
+@media(min-width: @screen-xs) {
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url(../image/adaptive-mobile@2x.png);
+    }
+}
+
+@media (min-width: @screen-md) {
+    .adaptive__picture {
+        opacity: 0.3;        
+        background-image: url(../image/adaptive-tablet.png);
+        background-size: 250px auto;        
+        @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+            background-image: url(../image/adaptive-tablet@2x.png);
+        }
+    }
+}
+
+@media (min-width: @screen-lg) {
+    .adaptive {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .adaptive__picture {     
+           
+        background-image: url(../image/adaptive.png);
+        background-position: 100%;
+        background-size: 450px auto;
+        @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+            background-image: url(../image/adaptive@2x.png);
+        }
+    }    
+
+    .adaptive__title {
+        width: 30%;
+        &--mask::before {
+            display: block;
+            top: -20px;
+            left: -50px;
+            font-size: 6rem;
+        }
+    }
+
+    .adaptive__text {
+        width: 60%;
+        text-align: left;
+    }
+    
+}
+
+@media (min-width: @screen-xl) {
+    .adaptive {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .adaptive__title {
+        &--mask::before {
+            left: 15px;
+        }
+    }
+}

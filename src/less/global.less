@@ -10,6 +10,7 @@ html {
 
 
 body {
+    margin: 0;
     font-size: @font-size;
     font-family: @font-family-text;
     font-weight: 400;
@@ -91,32 +92,41 @@ h6 {
 @amount: 12; //количество циклов
 @item-width: 100%; //ширина по умолчанию
 
-@media (min-width: @screen-sm)  {
-    .column-width-xs (@index) when (@index < @amount) {
-    &.col-xs-@{index} {
-        width: @index * (@item-width / @amount);
+@media (min-width: @screen-xs)  {
+    .column-width-s (@index) when (@index < @amount) {
+    &.col-s-@{index} {
+        width: @index * (@item-width / @amount)-1;
     }
-    .column-width-xs(@index + 1);
+    .column-width-s(@index + 1);    
 }
-.column-width-xs(1)    
+.column-width-s(1);   
+&.col-s-@{amount} {
+        width: @item-width;
+    } 
 }
 
 @media (min-width: @screen-md) {
     .column-width-md (@index) when (@index < @amount) {
     &.col-md-@{index} {
-        width: @index * (@item-width / @amount);
+        width: @index * (@item-width / @amount)-1;
     }
     .column-width-md(@index + 1);
 }
-.column-width-md(1)
+.column-width-md(1);
+&.col-md-@{amount} {
+        width: @item-width;
+    }
 }
 
 @media (min-width: @screen-lg) {
     .column-width-lg (@index) when (@index < @amount) {
     &.col-lg-@{index} {
-        width: @index * (@item-width / @amount);
+        width: @index * (@item-width / @amount)-1;
     }
     .column-width-lg(@index + 1);
 }
-.column-width-lg(1)
+.column-width-lg(1);
+&.col-lg-@{amount} {
+        width: @item-width;
+    }
 }
